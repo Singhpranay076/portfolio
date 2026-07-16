@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranay Singh - Portfolio</title>
+    <!-- Import Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #0ea5e9;
+            --accent-hover: #0284c7;
+            --text-main: #334155;
+            --text-muted: #475569;
+            --bg-card: rgba(255, 255, 255, 0.88);
+            --border-light: rgba(226, 232, 240, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 
+           UPDATED: Body now uses the absolute Cloud URL for the landscape image
+        */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(rgba(241, 245, 249, 0.75), rgba(241, 245, 249, 0.85)), 
+                        url('https://i.postimg.cc/cHypt08W/Gemini-Generated-Image-vmq3upvmq3upvmq3.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 0.95rem; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Interactive Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Header */
+        /* 
+           UPDATED: Header now uses the absolute Cloud URL with a dark gradient
+        */
+        header {
+            background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.90) 0%, rgba(15, 23, 42, 0.75) 100%), 
+                              url('https://i.postimg.cc/cHypt08W/Gemini-Generated-Image-vmq3upvmq3upvmq3.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            color: white;
+            padding: 6rem 1rem 5rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+            box-shadow: 0 12px 30px rgba(14, 165, 233, 0.5);
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header h2 {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .contact-info a, .contact-info span {
+            color: #f8fafc;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Layout & Containers */
+        .container {
+            max-width: 1200px; 
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Glassmorphism effect for sections */
+        section {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            scroll-margin-top: 100px;
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            height: 3px;
+            width: 40px;
+            background-color: var(--accent);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+
+        section:hover h3::after {
+            width: 100%;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            color: var(--text-main);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Experience & Education Items */
+        .item-card {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .item-card:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 0.4rem;
+        }
+
+        .job-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--primary);
+        }
+
+        .job-date {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            background: rgba(14, 165, 233, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+        }
+
+        .company-info {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Skills Badges */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-category h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Projects Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .project-card h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
+            font-weight: 700;
+        }
+
+        .project-card .subtitle {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            color: #cbd5e1;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header { padding: 4rem 1rem 3rem 1rem; }
+            header h1 { font-size: 2rem; }
+            header h2 { font-size: 0.95rem; }
+            .profile-img { width: 120px; height: 120px; }
+            nav { padding: 1rem; justify-content: center; gap: 1rem; }
+            nav a { font-size: 0.75rem; }
+            section { padding: 1.5rem; }
+            .job-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .job-date { margin-bottom: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+    </nav>
+
+    <!-- Hero Header -->
+    <header>
+        <div class="header-content">
+            <!-- UPDATED: Profile picture now uses absolute Cloud URL -->
+            <img src="https://i.postimg.cc/ZK2V5jNT/IMG-6128.jpg" alt="Pranay Singh" class="profile-img">
+            
+            <h1>Pranay Singh</h1>
+            <h2>Strategic Inventory & Supply Chain Leader<br>
+                ERP / SAP MM Specialist | Python-Driven Analytics | Process Optimization</h2>
+            
+            <div class="contact-info">
+                <span>📍 Kanpur, India</span>
+                <a href="mailto:sachanpranay08@gmail.com">✉️ sachanpranay08@gmail.com</a>
+                <span>📞 +91-9451402049</span>
+            </div>
+            <div class="contact-info">
+                <a href="https://www.linkedin.com/in/singhpranay076" target="_blank">🔗 LinkedIn</a>
+                <a href="https://github.com/Singhpranay076" target="_blank">💻 GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- About Section -->
+        <section id="about">
+            <h3>Bridging Data & Operations</h3>
+            <p>I am a strategic Inventory and Supply Chain Professional with over 6 years of progressive experience, specializing in driving operational excellence through end-to-end inventory management and ERP-driven reporting. My career is defined by successfully directing comprehensive inventory strategies, implementing digital transformation initiatives, and fostering cross-functional collaboration to align operational performance with organizational goals.</p>
+            <p>I transition seamlessly between ground-level site execution and advanced data architecture. Leveraging Python, SQL, and robust Data Engineering frameworks (Docker, Apache Airflow), I build automated ETL pipelines. Furthermore, I excel throughout the full procurement lifecycle, managing RFQ processing and vendor evaluation, and translating complex operational data into interactive Metabase dashboards that facilitate data-driven decisions, reduce wastage, and eliminate project delays. My approach is analytical, efficiency-focused, and committed to strategic supply chain innovation.</p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h3>Core Competencies</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Data & Analytics</h4>
+                    <div class="badge-list">
+                        <span class="badge">Python (Pandas, NumPy)</span>
+                        <span class="badge">PostgreSQL</span>
+                        <span class="badge">Apache Airflow</span>
+                        <span class="badge">Docker</span>
+                        <span class="badge">Data Warehousing</span>
+                        <span class="badge">ETL Pipelines</span>
+                        <span class="badge">Advanced Excel</span>
+                        <span class="badge">Tableau & Metabase</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Supply Chain Strategy</h4>
+                    <div class="badge-list">
+                        <span class="badge">Demand Forecasting</span>
+                        <span class="badge">Inventory Optimization</span>
+                        <span class="badge">EOQ Modeling</span>
+                        <span class="badge">Safety Stock Calculation</span>
+                        <span class="badge">ABC Classification</span>
+                        <span class="badge">MRP</span>
+                        <span class="badge">Strategic Sourcing</span>
+                        <span class="badge">Vendor Performance</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Logistics & Operations</h4>
+                    <div class="badge-list">
+                        <span class="badge">SAP MM (PR to PO)</span>
+                        <span class="badge">Warehouse Operations</span>
+                        <span class="badge">Inbound/Outbound Logistics</span>
+                        <span class="badge">Cycle Counts & Audits</span>
+                        <span class="badge">Workflow Optimization</span>
+                        <span class="badge">Sustainable Operations</span>
+                        <span class="badge">Cost Control</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h3>Operations Impact</h3>
+            
+            <div class="item-card">
+                <div class="job-header">
+                    <div class="job-title">Operations & Inventory Analyst / Crew Chief</div>
+                    <div class="job-date">Nov 2023 – Dec 2025</div>
+                </div>
+                <div class="company-info">ATR Systemgastronomie GmBH | Berlin, Germany</div>
+                <ul>
+                    <li>Directed daily warehouse and retail operations, including staff scheduling, workflow management, and vendor coordination to ensure seamless order fulfillment across high-volume service outlets.</li>
+                    <li>Achieved a <strong>15% stock efficiency improvement</strong> through precise, data-driven planning and optimized replenishment strategies.</li>
+                    <li>Analyzed daily KPIs and workflow data using advanced performance modelling to identify process gaps and eliminate bottlenecks.</li>
+                    <li>Streamlined purchase requisitioning and purchase order tracking in the ERP system, ensuring optimal material availability while maintaining robust cost controls.</li>
+                    <li>Led end-to-end inventory strategies, demand forecasting, and cross-functional collaboration to enhance visibility and operational resilience.</li>
+                </ul>
+            </div>
+
+            <div class="item-card">
+                <div class="job-header">
+                    <div class="job-title">Warehouse Executive / Operations Associate</div>
+                    <div class="job-date">Sep 2023 – Nov 2025</div>
+                </div>
+                <div class="company-info">ILA-solution (Pull & Bear) / ila-solution GmbH | Berlin, Germany</div>
+                <ul>
+                    <li>Managed end-to-end inbound and outbound warehouse operations, including goods receipt, order picking, packing, and dispatch for a major retail brand.</li>
+                    <li>Performed cycle counts and detailed inventory audits to align physical stock with system records, minimizing discrepancies.</li>
+                    <li>Identified critical inefficiencies in stock handling, implementing improvements to optimize inventory flow and storage utilization.</li>
+                    <li>Maintained accurate item master data and coordinated with logistics partners to ensure SLA compliance and delivery scheduling.</li>
+                </ul>
+            </div>
+
+            <div class="item-card">
+                <div class="job-header">
+                    <div class="job-title">Warehouse Associate</div>
+                    <div class="job-date">Aug 2023 – Jan 2024</div>
+                </div>
+                <div class="company-info">flaschenpost SE | Germany</div>
+                <ul>
+                    <li>Executed rapid and accurate order fulfillment, strictly maintaining SLAs for time-sensitive deliveries.</li>
+                    <li>Supported inbound processing, item master updates, and daily inventory validation to ensure high operational data integrity.</li>
+                    <li>Coordinated with logistics partners to optimize delivery scheduling and resolve distribution network challenges efficiently.</li>
+                </ul>
+            </div>
+
+            <div class="item-card">
+                <div class="job-header">
+                    <div class="job-title">Site Procurement & Operations Analyst (Civil Engineer)</div>
+                    <div class="job-date">May 2020 – Jun 2022</div>
+                </div>
+                <div class="company-info">Krishna Engineering Works | Kanpur, UP, India</div>
+                <ul>
+                    <li>Orchestrated site-level material procurement and vendor coordination for construction projects, leveraging historical consumption data to optimize order quantities.</li>
+                    <li>Monitored material consumption trends to forecast required purchase volumes, directly supporting project budgeting and cost control.</li>
+                    <li>Assisted in the preparation and tracking of purchase requisitions, eliminating material-driven project delays.</li>
+                    <li>Maintained asset and material logs, including documentation for timely disposal of obsolete materials, ensuring 100% data compliance for digital audit trails.</li>
+                </ul>
+            </div>
+            
+            <div class="item-card">
+                <div class="job-header">
+                    <div class="job-title">Junior Site Procurement & Operations Analyst</div>
+                    <div class="job-date">Oct 2018 – May 2020</div>
+                </div>
+                <div class="company-info">Rama Civil India Construction Pvt. Ltd. | Delhi-NCR / Ghaziabad, UP, India</div>
+                <ul>
+                    <li>Tracked and analyzed site-level operational data and material consumption trends using advanced Excel and reporting tools to support project planning.</li>
+                    <li>Maintained meticulous records of material purchases, invoices, and usage tracking for financial cost control and audits.</li>
+                    <li>Supported the generation of daily and weekly operational reports to enhance visibility on resource utilization and vendor performance.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h3>Technical Projects</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h4>Automated Supply Chain Control Tower</h4>
+                    <div class="subtitle">ETL Pipeline & Data Architecture</div>
+                    <p>Architected and deployed a proof-of-concept ETL data pipeline utilizing <strong>Docker</strong> and <strong>Apache Airflow</strong> to orchestrate the ingestion of simulated global supply chain data. Programmed Python transformation scripts (Pandas) to extract, cleanse, and standardize transaction data. Designed a 10-table PostgreSQL Data Warehouse.</p>
+                </div>
+
+                <div class="project-card">
+                    <h4>Supply Chain Visibility Dashboard</h4>
+                    <div class="subtitle">Data Visualization (Metabase)</div>
+                    <p>Designed and deployed interactive dashboards to track end-to-end supply chain KPIs, integrating data from order systems and inventory levels to provide real-time visibility, track supplier performance, and proactively identify operational bottlenecks.</p>
+                </div>
+
+                <div class="project-card">
+                    <h4>Predictive Demand Modelling</h4>
+                    <div class="subtitle">Python-Driven Analytics</div>
+                    <p>Developed Python-based demand forecasting models analyzing historical consumption and sales data. Utilized seasonal decomposition and time-series analysis to optimize safety stock and replenishment cycles for complex logistical operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h3>Academic Background</h3>
+            
+            <div class="item-card">
+                <div class="job-header">
+                    <div class="job-title">Master of Business Administration, Logistics, Materials, & Supply Chain</div>
+                    <div class="job-date">Oct 2023 – May 2025</div>
+                </div>
+                <div class="company-info">London South Bank University | London, England</div>
+            </div>
+
+            <div class="item-card">
+                <div class="job-header">
+                    <div class="job-title">Master of Business Administration (MBA), Supply Chain and IT Management</div>
+                    <div class="job-date">Jan 2023 – Jul 2024</div>
+                </div>
+                <div class="company-info">IU International University of Applied Sciences | Berlin, Germany</div>
+            </div>
+
+            <div class="item-card">
+                <div class="job-header">
+                    <div class="job-title">Bachelor of Technology (BTech), Civil Engineering</div>
+                    <div class="job-date">Jul 2014 – Aug 2018</div>
+                </div>
+                <div class="company-info">Galgotias College of Engineering & Technology | Greater Noida, India</div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h3>Qualifications & Languages</h3>
+            
+            <h4 style="margin-top: 0.5rem; color: var(--secondary); margin-bottom: 1rem; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Licensed Certifications</h4>
+            <ul style="margin-bottom: 2.5rem;">
+                <li><strong>SAP MM End User + Configuration Level:</strong> Focused on Procure-to-Pay (P2P) Cycle, Purchasing Process, Inventory Management, Invoice Verification, and FI Integration.</li>
+                <li><strong>Unilever Supply Chain Data Analyst:</strong> Advanced training in Supply Chain Management, Data Analytics Implementation, and Supply Chain Software Tools.</li>
+                <li><strong>Airbus Supply Chain Specialist:</strong> Specialization in Global Supply Chains, Procurement Strategies, Demand Forecasting, and Inventory Management.</li>
+            </ul>
+
+            <h4 style="color: var(--secondary); margin-bottom: 1rem; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Languages</h4>
+            <div class="badge-list">
+                <span class="badge">English (Fluent)</span>
+                <span class="badge">Hindi (Native)</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Strategic Supply Chain Solutions • Kanpur, India</p>
+        <p style="margin-top: 0.8rem; font-size: 0.85rem; opacity: 0.6;">&copy; 2026 Pranay Singh. Designed for Impact.</p>
+    </footer>
+
+</body>
+</html>
